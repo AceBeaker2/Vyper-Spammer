@@ -17,14 +17,14 @@ I'll assume that you are running this with
 
 ### DNS records
 Add the following DNS records on your registrar, I recommend [cloudflare](https://cloudflare.com/)
-```bash
+```yaml
 Type: A
 Name: example.com
 Content/Value: 210.210.210.210
 TTL: Automatic
 ```
 
-```bash
+```yaml
 Type: MX
 Name: example.com
 Content/Value: example.com
@@ -32,32 +32,43 @@ Priority: 10
 TTL: Automatic
 ```
 ### Port forwarding
-On whatever computer you are running you will have to make sure your router is port forwarded for the port 25 and routes its traffic to the private ip of where the code will run. If it will run on 192.168.0.10, port forward 192.168.0.10 port 25. If you don't know how to do it your ISP might be blocking you or your router is just bad, there are tons of guides online, even on my channel.
+On whatever computer you are running you will have to make sure your router is port forwarded for the port 25 and routes its traffic to the private ip of where the code will run. If it will run on 192.168.0.10, port forward 192.168.0.10 port 25. If you don't know how to do it your ISP might be blocking you or your router is just bad, there are tons of guides online.
 
+### Download repository
+Make sure you have git installed, and then run in powershell(Windows) or your favorite linux/macos terminal:
+```bash
+git clone github.com/AceBeaker2/Vyper-Spammer
+cd Vyper-Spammer
+```
 ### Setup config.py
 
 
 Inside of the config.py file, set the following values:
-```bash
+```py
 domain_name = 'yourdomain.com'
 ipv4_address = '192.168.0.10'
 ```
 If on windows set
-```bash
+```py
 parallel = False
 processes = 1
 ```
 If on Linux/MacOS set
-```
+```py
 parallel = True
 processes = 15
 ```
 Set
-```
+```py
 ref_link = 'https://vy.tc/your-referral-link'
 ```
 
 ## Running
+Install dependencies with
+```bash
+python3 -m pip install -r requirements.txt
+```
+
 Start the mail server by running:
 ```bash
 python3 abuseserver.py
