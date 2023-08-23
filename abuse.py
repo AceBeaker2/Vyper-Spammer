@@ -57,7 +57,7 @@ for line in lines:
     #p = Process(target=abuse, args=(line.split(':::')[0],line.split(':::')[1]))
     #p.daemon = True
     #p.start()
-    asyncio.run(asyncio.wait_for(abuse(line.split(':::')[0],line.split(':::')[1]), 30))
+    asyncio.run(asyncio.wait_for(abuse(line.split(':::')[0],line.split(':::')[1]), 180))
     counter += 1
     print(f'[Success] {line.split(":::")[1][:-2]} is signing up on {line.split(":::")[0]}')
     print(f'[Status] {str(counter*config.processes)} accounts being cheated in')
