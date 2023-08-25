@@ -16,7 +16,7 @@ ipv4_address = '10.0.0.12'
 pyname = 'python3.9'
 
 # fakes number
-fakes = 3
+fakes = 1000
 
 
 # Whether to run more than one process(Only works on
