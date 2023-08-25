@@ -24,7 +24,8 @@ def savefakes():
     counter = 0
     for i in range(config.fakes):
         counter += 1
-        #print('[Status] ' + str(round(counter/10)/10) + '% done making fake data')
+        percentage_done = (counter / config.fakes) * 100
+        print('[Status] {:.2f}% done making fake data'.format(percentage_done))
         fname = fake.first_name()
         lname = fake.last_name()
         done = False
