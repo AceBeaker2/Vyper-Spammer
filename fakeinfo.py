@@ -8,6 +8,7 @@ Created on Mon Aug 21 16:00:23 2023
 from faker import Faker
 from random import randint
 import json
+import config
 
 fake = Faker()
 
@@ -21,9 +22,9 @@ data = []
 
 def savefakes():
     counter = 0
-    for i in range(10_000):
+    for i in range(config.fakes):
         counter += 1
-        print('[Status] ' + str(round(counter/10)/10) + '% done making fake data')
+        #print('[Status] ' + str(round(counter/10)/10) + '% done making fake data')
         fname = fake.first_name()
         lname = fake.last_name()
         done = False

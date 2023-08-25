@@ -21,26 +21,28 @@ if verbose:
 #ref_link = input("Input referral link: ")
 
 async def abuse(email,name):
-    vyperapi.send_api(email, name)
-
+    global verbose
+    await vyperapi.send_api(email, name, verbose=verbose)
+    
     filename = 'maildata/' + email.split('@')[0] + '.txt'
     done = False
-
+    
     while not done:
         if os.path.isfile(filename):
             done = True
-
+    
     with open(filename, "r") as file:
         lines = file.readlines()
-
+    
     textdata = ''
     for line in lines:
         textdata = textdata + '\n' + line
-
+    if verbose:
+        print(textdata)
     match = re.search(r"\((.*?)\)", textdata)
     link = match.group(1)
     #os.system('python3.9 fire_forget.py ' + link + ' &')
-    vyperapi.get(link)
+    await vyperapi.get(link, verbose=verbose)
 
 import fakeinfo
 
@@ -56,7 +58,8 @@ with open(fakedata, "r") as f:
 start = time.time()
 
 # To stop network spam by ensuring all processes start at different times
-time.sleep(randint(1,10))
+if not verbose:
+    time.sleep(randint(1,10))
 
 
 for line in lines:
@@ -82,7 +85,7 @@ for line in lines:
 
     per_hour = 3600/time_per
     print(f'[Status] {round(time_per*100/config.processes)/100} seconds per scam / {round(per_hour*config.processes)} scams per hour')
-    if counter == 100:
-        counter = 10
-        time_elapsed = time_elapsed/10
+    if counter == 15:
+        counter = 5
+        time_elapsed = time_elapsed/3
         start = time.time()-time_elapsed

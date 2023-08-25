@@ -12,6 +12,7 @@ from aiosmtpd.controller import Controller
 from email import message_from_bytes
 import config
 import cleardata
+from random import randint
 
 cleardata.cleardata('maildata')
 
