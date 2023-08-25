@@ -2,7 +2,7 @@ import config
 import os
 import cleardata
 
-cleardata.cleardata('fakeinfo')
+cleardata.cleardata('fakedata')
 
 answer = input('Have you setup the mail server[y/N]: ')
 
